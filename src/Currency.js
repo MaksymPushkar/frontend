@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 
-class App extends React.Component {
+class Currency extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +20,8 @@ class App extends React.Component {
             items: result
           });
         },
+        // Примечание: важно обрабатывать ошибки именно здесь, а не в блоке catch(),
+        // чтобы не перехватывать исключения из ошибок в самих компонентах.
         (error) => {
           this.setState({
             isLoaded: true,
@@ -39,10 +41,10 @@ class App extends React.Component {
     } else {
       return (
         <ul>
-          <li class="table__element table__element_title">Rate</li>
+          <li class="table__element table__element_title">Сurrency</li>
           {items.map(item => (
-            <li class="table__element" key={item.rate}>
-              {item.rate}
+            <li class="table__element" key={item.txt}>
+              {item.txt}
             </li>
           ))}
         </ul>
@@ -51,4 +53,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default Currency;
